@@ -1,4 +1,4 @@
-
+const { findAnimals } = require('./db.js')
 
 module.exports = {
   Query: {
@@ -6,31 +6,7 @@ module.exports = {
       return animalData
     },
     animal: (_, queryArgs, {})=> {
-      return animalData.reduce((acc, currentAnimal)=> {
-          let add = true;
-          for (var key in queryArgs) {
-            if(queryArgs[key] !== currentAnimal[key]) add = false;
-          }
-          if (add) acc.push(currentAnimal)
-          return acc
-        },[])
-
-        // console.log(data)
-
-        // return [animalData[0]]
+      return findAnimals(queryArgs)
     }
   }
 }
-
-var animalData = [
-  {
-    "name": "Sebastian",
-    "type": "Camel",
-    "noise": "I am thirsty"
-  },
-  {
-    "name": "Bart",
-    "type": "Bat",
-    "noise": "moo"
-  }
-]
