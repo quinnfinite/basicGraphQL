@@ -14,5 +14,11 @@ module.exports = {
    const collection = database.collection(dbCollection)
    var allAnimals = await collection.find(query).toArray()
    return allAnimals
+ },
+ addAnimal: async (animal) => {
+  const database = client.db(dbName);
+  const collection = database.collection(dbCollection)
+  var newAnimal = await collection.insertOne(animal)
+  return animal
  }
 }

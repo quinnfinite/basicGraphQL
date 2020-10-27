@@ -1,4 +1,4 @@
-const { findAnimals } = require('./db.js')
+const { findAnimals, addAnimal } = require('./db.js')
 
 module.exports = {
   Query: {
@@ -7,6 +7,11 @@ module.exports = {
     },
     animal: (_, queryArgs, {})=> {
       return findAnimals(queryArgs)
+    }
+  },
+  Mutation: {
+    addAnimal: (_, animal, {}) => {
+      return addAnimal(animal)
     }
   }
 }
